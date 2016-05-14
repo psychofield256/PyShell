@@ -2,7 +2,8 @@
 List of the commands used in the shell.
 
 TODO:
--rm
+-Scripting language, executable by "exe" or "exec" command.
+To make the syntax independant from function names like "add", a lisp-like syntax could be used.
 """
 
 import os
@@ -12,13 +13,13 @@ from functools import reduce
 
 def say(msg=""):
     """Prints the message to the screen."""
-    print(msg)
+    return msg
 
 
 def add(str_args):
     """Simple addition."""
     args = str_args.split()
-    print(sum([int(arg) for arg in args]))
+    return sum([int(arg) for arg in args])
 
 
 def sub(str_args):
@@ -26,13 +27,13 @@ def sub(str_args):
     # this part raises an error if there are not 2 args
     # it's on purpose, the shell will handle the error
     x, y = str_args.split()
-    print(int(x) - int(y))
+    return int(x) - int(y)
 
 
 def mul(str_args):
     "Simple multiplication."
     args = str_args.split()
-    print(reduce(lambda x, y: x * y, args))
+    return reduce(lambda x, y: x * y, args)
 
 
 def mkdir(name):
@@ -47,7 +48,7 @@ def mkfile(name):
 
 def pwd():
     """Print working directory."""
-    print(os.getcwd())
+    return os.getcwd()
 
 
 def cd(path):
@@ -63,9 +64,9 @@ def rm(file):
         try:
             os.rmdir(file)
         except OSError:
-            print("the folder is not empty and can't be deleted")
+            return "the folder is not empty and can't be deleted"
     else:
-        print("no such file or directory")
+        return "no such file or directory"
 
 
 command_list = {

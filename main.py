@@ -41,9 +41,11 @@ def main():
             if command in commands:
                 try:
                     if args:
-                        commands[command](args)
+                        value = commands[command](args)
+                        if value is not None: print(value)
                     else:
-                        commands[command]()
+                        value = commands[command]()
+                        if value is not None: print(value)
                 except Exception as e:
                     print("An error occured:", e)
             else:
