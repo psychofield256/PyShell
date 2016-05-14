@@ -49,7 +49,8 @@ def main():
                 except Exception as e:
                     print("An error occured:", e)
             else:
-                commands["help"]()
+                print("Unknown command.")
+                print(commands["help"]())
 
 
 if __name__ == "__main__":

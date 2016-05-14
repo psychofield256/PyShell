@@ -22,12 +22,15 @@ def help(commands_str=None):
     """The help for every command"""
     # if one or more command is passed in arguments give their doc
     if commands_str:
+        ret_value = ""
         for command in commands_str.split():
             if command in commands:
-                print("%s: %s" % (command, commands[command].__doc__))
+                ret_value += "%s: %s\n" % (command, commands[command].__doc__)
             else:
-                print("Unknown command.")
+                ret_value += "Unknown command.\n"
     else:
-        print("command list:")
+        ret_value = "command list:\n"
         for c in commands:
-            print("%s: %s" % (c, commands[c].__doc__))
+            ret_value += "%s: %s\n" % (c, commands[c].__doc__)
+
+    return ret_value

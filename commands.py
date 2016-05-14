@@ -32,7 +32,7 @@ def sub(str_args):
 
 def mul(str_args):
     "Simple multiplication."
-    args = str_args.split()
+    args = map(int, str_args.split())
     return reduce(lambda x, y: x * y, args)
 
 
